@@ -2,5 +2,5 @@
 
 public enum EventHandlerType : ushort
 {
-    
+    Login = 0
 }

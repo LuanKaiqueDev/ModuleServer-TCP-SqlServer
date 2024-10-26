@@ -2,14 +2,14 @@
 
 namespace Core.Shared.Abstracts;
 
-public abstract class AbstractEventHandler(ushort eventHandlerType)
+public abstract class AbstractEventHandler(ushort handlerType)
 {
-    public readonly ushort EventHandlerType = eventHandlerType;
+    public readonly ushort HandlerType = handlerType;
     
     protected ByteWriter CreateMessage()
     {
         ByteWriter messageWriter = new ByteWriter();
-        messageWriter.Write(EventHandlerType);
+        messageWriter.Write(HandlerType);
         return messageWriter;
     }
     public abstract void ParseMessage(int key, ByteReader mr);

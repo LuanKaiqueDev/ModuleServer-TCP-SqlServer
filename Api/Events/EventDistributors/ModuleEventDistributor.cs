@@ -1,5 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using Api.Events.Enums;
+using Api.Events.Handlers;
 using Core.Logging;
 using Core.Shared.Abstracts;
 using Core.Shared.ByteHandler;
@@ -7,7 +8,7 @@ using Core.Shared.Interfaces;
 
 namespace Api.Events.EventDistributors;
 
-public class ModuleEventDistributor : IEventDistributor
+public class ModuleEventDistributor(IServiceProvider provider) : IEventDistributor
 {
     #region Fields
 
@@ -21,7 +22,7 @@ public class ModuleEventDistributor : IEventDistributor
     {
         Logger.Information("Initializing EventDistributor...");
         RegisterHandlers(CreateDefaultHandlers());
-        Logger.Information($"Initialized EventDistributor with {Handlers.Count} handlers.");
+        Logger.Information($"Initialized EventDistributor with {Handlers.Count} handler's.");
     }
 
     AbstractEventHandler IEventDistributor.GetHandler(ushort handlerType)
@@ -47,23 +48,25 @@ public class ModuleEventDistributor : IEventDistributor
     {
         foreach (var current in handlers)
         {
-            if (Handlers.TryAdd((EventHandlerType)current.EventHandlerType, current))
+            if (Handlers.TryAdd((EventHandlerType)current.HandlerType, current))
             {
-                Logger.Information($"[{((EventHandlerType)current.EventHandlerType).ToString()}Handler] has been registered.");
+                Logger.Information($"[{((EventHandlerType)current.HandlerType).ToString()}Handler] has been registered.");
             }
             else
             {
-                Logger.Error($"Handler for type {current.EventHandlerType} is already registered.");
+                Logger.Error($"Handler for type {current.HandlerType} is already registered.");
             }
         }
     }
 
     private AbstractEventHandler[] CreateDefaultHandlers()
     {
-        return new AbstractEventHandler[]
+        var handlers = new List<AbstractEventHandler>
         {
-            //Add Handlers here
+            new LoginEventHandler(provider)
+            
         };
+        return handlers.ToArray();
     }
 
     #endregion

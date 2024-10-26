@@ -1,4 +1,5 @@
 ﻿using Api.Events.Executors;
+using Api.Events.Handlers;
 using Api.Interfaces;
 using Core.Logging;
 using Core.Shared;
@@ -65,7 +66,7 @@ namespace Api
 
         protected override void OnSessionCreated(int key)
         {
-            //Send LoginEventHandler.GetHandler().Connected();
+            LoginEventHandler.GetEventHandler().Connected(key);
         }
 
         protected override void OnSessionClosed(int key)

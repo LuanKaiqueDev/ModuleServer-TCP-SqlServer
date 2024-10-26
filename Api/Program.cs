@@ -28,9 +28,9 @@ host.ConfigureLogging(logging =>
 
 host.ConfigureServices((context, services) =>
 {
-    services.Configure<Networking>(context.Configuration.GetSection("Networking"));
     services.AddDbContext<AppDbContext>(options =>
         options.UseSqlServer(context.Configuration.GetSection("ConnectionString").Value));
+    services.Configure<Networking>(context.Configuration.GetSection("Networking"));
     services.AddScoped<CharacterRepository>();
     services.AddSingleton<IEventDistributor, ModuleEventDistributor>();
     services.AddSingleton<IModule, Module>();
