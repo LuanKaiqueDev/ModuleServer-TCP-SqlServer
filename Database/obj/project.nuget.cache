@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RGSdHUcDkOY=",
+  "dgSpecHash": "Ea0y9jeTekE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\luanr\\RiderProjects\\ModuleServer\\Database\\Database.csproj",
+  "projectFilePath": "C:\\Users\\luanr\\Documents\\GitHub\\ModuleServer-TCP-SqlServer\\Database\\Database.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luanr\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\luanr\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

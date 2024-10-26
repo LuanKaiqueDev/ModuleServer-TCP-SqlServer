@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luanr\\RiderProjects\\ModuleServer\\Core\\Core.csproj": {}
+    "C:\\Users\\luanr\\Documents\\GitHub\\ModuleServer-TCP-SqlServer\\Core\\Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luanr\\RiderProjects\\ModuleServer\\Core\\Core.csproj": {
+    "C:\\Users\\luanr\\Documents\\GitHub\\ModuleServer-TCP-SqlServer\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luanr\\RiderProjects\\ModuleServer\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\luanr\\Documents\\GitHub\\ModuleServer-TCP-SqlServer\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\luanr\\RiderProjects\\ModuleServer\\Core\\Core.csproj",
+        "projectPath": "C:\\Users\\luanr\\Documents\\GitHub\\ModuleServer-TCP-SqlServer\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\luanr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luanr\\RiderProjects\\ModuleServer\\Core\\obj\\",
+        "outputPath": "C:\\Users\\luanr\\Documents\\GitHub\\ModuleServer-TCP-SqlServer\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\luanr\\AppData\\Roaming\\NuGet\\NuGet.Config"

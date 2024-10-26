@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luanr\\RiderProjects\\ModuleServer\\Database\\Database.csproj": {}
+    "C:\\Users\\luanr\\Documents\\GitHub\\ModuleServer-TCP-SqlServer\\Database\\Database.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luanr\\RiderProjects\\ModuleServer\\Database\\Database.csproj": {
+    "C:\\Users\\luanr\\Documents\\GitHub\\ModuleServer-TCP-SqlServer\\Database\\Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luanr\\RiderProjects\\ModuleServer\\Database\\Database.csproj",
+        "projectUniqueName": "C:\\Users\\luanr\\Documents\\GitHub\\ModuleServer-TCP-SqlServer\\Database\\Database.csproj",
         "projectName": "Database",
-        "projectPath": "C:\\Users\\luanr\\RiderProjects\\ModuleServer\\Database\\Database.csproj",
+        "projectPath": "C:\\Users\\luanr\\Documents\\GitHub\\ModuleServer-TCP-SqlServer\\Database\\Database.csproj",
         "packagesPath": "C:\\Users\\luanr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luanr\\RiderProjects\\ModuleServer\\Database\\obj\\",
+        "outputPath": "C:\\Users\\luanr\\Documents\\GitHub\\ModuleServer-TCP-SqlServer\\Database\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\luanr\\AppData\\Roaming\\NuGet\\NuGet.Config"
