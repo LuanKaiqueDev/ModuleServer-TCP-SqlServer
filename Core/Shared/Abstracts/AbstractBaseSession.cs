@@ -53,6 +53,10 @@ namespace Core.Shared.Abstracts
                     int index = _nextSessionKey++; // Use and increment the counter
 
                     IServerSessionHandler handler = GetSessionHandler();
+                    if (handler is AbstractExecutorSessionHandler ash)
+                    {
+                        ash.OnDisconnect += OnDisconnected;
+                    }
                     handler.Start(index, sessionSocket, _bufferSize);
                     _sessionHandlers.TryAdd(index, handler);
                     OnSessionCreated(index);
@@ -67,8 +71,8 @@ namespace Core.Shared.Abstracts
         #endregion
 
         #region Protected Methods
-        
-        protected void OnDisconnected(int key)
+
+        private void OnDisconnected(int key)
         {
             OnSessionClosed(key);
             _sessionHandlers.TryRemove(key, out var sessionHandler);
@@ -79,12 +83,49 @@ namespace Core.Shared.Abstracts
         
         protected abstract void OnSessionCreated(int key);    
         protected abstract void OnSessionClosed(int key);
-        protected void SendBytes(int key, ByteWriter writer)
+        protected void SendBytesTo(int key, ByteWriter writer)
         {
             try
             {
                 if (_sessionHandlers.TryGetValue(key, out ISessionHandler? value))
                 {
+                    value.SendBytes(writer);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        protected void SendBytesToAllExcept(int excludedKey, ByteWriter writer)
+        {
+            try
+            {
+                foreach (var keyValuePair in _sessionHandlers)
+                {
+                    int key = keyValuePair.Key;
+                    ISessionHandler value = keyValuePair.Value;
+                    if (key == excludedKey) continue;
+
+                    value.SendBytes(writer);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        protected void SendBytesToAll(ByteWriter writer)
+        {
+            try
+            {
+                foreach (var keyValuePair in _sessionHandlers)
+                {
+                    ISessionHandler value = keyValuePair.Value;
                     value.SendBytes(writer);
                 }
             }

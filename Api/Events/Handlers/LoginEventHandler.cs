@@ -70,6 +70,6 @@ public class LoginEventHandler : AbstractEventHandler
     {
         ByteWriter writer = CreateMessage();
         writer.Write((ushort)Sender.Connected);
-        _module.SendBytes(key, writer);
+        _module.SendBytesTo(key, writer);
     }
 }

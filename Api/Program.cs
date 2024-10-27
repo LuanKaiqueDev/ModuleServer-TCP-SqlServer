@@ -34,6 +34,7 @@ host.ConfigureServices((context, services) =>
     services.AddScoped<CharacterRepository>();
     services.AddSingleton<IEventDistributor, ModuleEventDistributor>();
     services.AddSingleton<IModule, Module>();
+    services.AddSingleton<ISector, Sector>();
 });
 
 IHost build = host.Build();

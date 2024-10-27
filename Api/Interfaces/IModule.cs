@@ -5,6 +5,7 @@ namespace Api.Interfaces;
 public interface IModule
 {
     void Start();
-    void SendBytes(int key, ByteWriter reader);
-    Task SendBytesAsync(int key, ByteWriter reader);
+    void SendBytesTo(int key, ByteWriter writer);
+    delegate void DisconnectCallback(int key);
+    event DisconnectCallback? OnSessionEnd;
 }

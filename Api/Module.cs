@@ -15,7 +15,7 @@ namespace Api
         #region Fields
 
         private readonly Networking _networking = networkingOptions.Value;
-
+        public event IModule.DisconnectCallback? OnSessionEnd;
         #endregion
 
         #region ISession Implementation
@@ -33,16 +33,11 @@ namespace Api
             }
         }
 
-        void IModule.SendBytes(int key, ByteWriter reader)
+        void IModule.SendBytesTo(int key, ByteWriter reader)
         {
-            base.SendBytes(key,reader);
+            base.SendBytesTo(key,reader);
         }
 
-        async Task IModule.SendBytesAsync(int key, ByteWriter reader)
-        {
-            await base.SendBytesAsync(key,reader);
-        }
-        
         #endregion
 
         #region Private Methods
@@ -57,12 +52,7 @@ namespace Api
 
         #region Protected Methods
 
-        protected override IServerSessionHandler GetSessionHandler()
-        {
-            ModuleExecutor moduleExecutor = new(distributor);
-            moduleExecutor.OnDisconnect += base.OnDisconnected;
-            return moduleExecutor;
-        }
+        protected override IServerSessionHandler GetSessionHandler() => new ModuleExecutor(distributor);
 
         protected override void OnSessionCreated(int key)
         {
@@ -71,7 +61,7 @@ namespace Api
 
         protected override void OnSessionClosed(int key)
         {
-            
+            OnSessionEnd?.Invoke(key);
         }
 
         #endregion
